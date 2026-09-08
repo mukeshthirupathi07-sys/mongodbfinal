@@ -203,8 +203,7 @@ After delete operation in product collection
 ```
 <img width="633" height="648" alt="643231653-4d9fdd53-0fe8-4368-ac3f-f074755b8612" src="https://github.com/user-attachments/assets/e11f3724-1000-4708-b44a-b7e4c571c39b" />
 
-    
-###RESULT:
+RESULT:
 
 The CRUD Operations on the Products Collection using MongoDB were implemented successfully. The product documents were created, retrieved, updated, and deleted using appropriate MongoDB commands, and the final changes were successfully verified in the Products collection.
 
