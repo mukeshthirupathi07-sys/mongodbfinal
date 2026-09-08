@@ -65,8 +65,62 @@ Display the final Products collection and verify the changes made through the CR
 Execute all the MongoDB commands, capture the required outputs, commit the completed experiment, and push the changes to the forked GitHub repository.
 
 ## PROGRAM:
-
-*(Paste the MongoDB commands for performing Create, Read, Update, and Delete operations on the Products collection here.)*
+```
+To create a database
+use mydb
+```
+```
+db.createCollection("products")
+```
+```
+`db.products.insertMany([
+    {
+      _id: 1,
+      name: "Laptop",
+      brand: "Dell",
+      price: 55000,
+      category: "Electronics",
+      stock: 30,
+      tags: ["computer", "technology"]
+    },
+    {
+      _id: 2,
+      name: "Smartphone",
+      brand: "Samsung",
+      price: 30000,
+      category: "Electronics",
+      stock: 50,
+      tags: ["mobile", "android"]
+    },
+    {
+      _id: 3,
+      name: "Headphones",
+      brand: "Sony",
+      price: 2500,
+      category: "Accessories",
+      stock: 100,
+      tags: ["audio", "music"]
+    },
+    {
+      _id: 4,
+      name: "Smartwatch",
+      brand: "Apple",
+      price: 45000,
+      category: "Electronics",
+      stock: 20,
+      tags: ["wearable", "ios"]
+    },
+    {
+      _id: 5,
+      name: "Keyboard",
+      brand: "Logitech",
+      price: 1200,
+      category: "Accessories",
+      stock: 80,
+      tags: ["computer", "typing"]
+    }
+  ])
+```
 
 ## OUTPUT:
 
