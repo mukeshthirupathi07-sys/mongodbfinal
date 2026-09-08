@@ -65,155 +65,90 @@ Display the final Products collection and verify the changes made through the CR
 Execute all the MongoDB commands, capture the required outputs, commit the completed experiment, and push the changes to the forked GitHub repository.
 
 ## PROGRAM:
-To create a database
+a) Stock Market Prediction using Linear Regression : To predict future stock prices using machine learning regression techniques.
 ```
-use mydb
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+data = pd.read_csv("stock_data_big.csv")
+
+print(data.head())
+
+X = data[["Open", "High", "Low", "Volume"]]
+y = data["Close"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+predictions = model.predict(X_test)
+
+print("\nMean Squared Error:", mean_squared_error(y_test, predictions))
+print("R2 Score:", r2_score(y_test, predictions))
+
+plt.figure(figsize=(8,5))
+plt.plot(y_test.values[:50], label='Actual Prices', color='blue')
+plt.plot(predictions[:50], label='Predicted Prices', color='red')
+plt.title("Stock Price Prediction (Actual vs Predicted)")
+plt.xlabel("Time")
+plt.ylabel("Stock Close Price")
+plt.legend()
+plt.show()
 ```
-To create collection "product"
-```
-db.createCollection("products")
-```
-To insert all documents in product collections
-```
-`db.products.insertMany([
-    {
-      _id: 1,
-      name: "Laptop",
-      brand: "Dell",
-      price: 55000,
-      category: "Electronics",
-      stock: 30,
-      tags: ["computer", "technology"]
-    },
-    {
-      _id: 2,
-      name: "Smartphone",
-      brand: "Samsung",
-      price: 30000,
-      category: "Electronics",
-      stock: 50,
-      tags: ["mobile", "android"]
-    },
-    {
-      _id: 3,
-      name: "Headphones",
-      brand: "Sony",
-      price: 2500,
-      category: "Accessories",
-      stock: 100,
-      tags: ["audio", "music"]
-    },
-    {
-      _id: 4,
-      name: "Smartwatch",
-      brand: "Apple",
-      price: 45000,
-      category: "Electronics",
-      stock: 20,
-      tags: ["wearable", "ios"]
-    },
-    {
-      _id: 5,
-      name: "Keyboard",
-      brand: "Logitech",
-      price: 1200,
-      category: "Accessories",
-      stock: 80,
-      tags: ["computer", "typing"]
-    }
-  ])
-```
-To read all documents in product collections
-```
-db.products.find().pretty()
-```
-To read products below 5000
-```
-db.products.find({ price: { $lt: 5000 } })
-```
-To read only accessories
-```
-db.products.find({ category: "Accessories" })
-```
-To read electronics below 50,000
-```
-db.products.find({
-  $and: [
-    { category: "Electronics" },
-    { price: { $lt: 50000 } }
-  ]
-})
-```
-To update laptop price
-```
-db.products.updateOne(
-  { name: "Laptop" },
-  { $set: { price: 52000 } }
-)
-```
-To increase keyboard stock by 10
-```
-db.products.updateOne(
-  { name: "Keyboard" },
-  { $inc: { stock: 10 } }
-)
-```
-To add premium tag to smartwatch
-```
-db.products.updateOne(
-  { name: "Smartwatch" },
-  { $push: { tags: "premium" } }
-)
-```
-To delete Keyboard
-```
-db.products.deleteOne({
-  name: "Keyboard"
-})
+b) Real-Time Sentiment Analysis of Tweets: Perform real-time sentiment analysis on user-provided text data (tweets or reviews).
 ```
 
-## OUTPUT:
-After Insertions
-```
-```
-<img width="819" height="94" alt="643231602-f2080e4c-79d4-4ee2-915a-ba3d507cb604" src="https://github.com/user-attachments/assets/a4182eef-0330-4c49-a015-2c2d2ac939ec" />
-```
-After read operation
-```
-<img width="601" height="806" alt="643231610-a76c3589-34b6-4eda-b3fc-e7f00e449a2c" src="https://github.com/user-attachments/assets/92b56fd2-e14b-45df-b654-6fbf3f8802a0" />
-```
-```
-To read products below 5000
-```
-```
-<img width="839" height="483" alt="643231622-a7199b83-724f-4b72-9e10-1829cf7c245f" src="https://github.com/user-attachments/assets/66a0112d-44c1-467f-99ef-66849ba6aac6" />
-```
-```
-To read only accessories
-```
-```
-<img width="840" height="485" alt="643231627-57f983b2-b1ad-4f1a-93bd-2f095c6733c5" src="https://github.com/user-attachments/assets/93be317d-3d12-404f-b529-e8cbd53c6d80" />
-```
-```
-To read electronics below 50,000
-```
-```
-<img width="828" height="466" alt="643231636-a221790c-62b0-4654-a633-71b85acad5db" src="https://github.com/user-attachments/assets/b0513c1c-c1eb-4a1b-b076-405f51175ac4" />
-```
-```
-After updating the product collections
-```
-```
-<img width="630" height="800" alt="643231644-988cb312-02ca-4ed7-94f3-28a9c9f05754" src="https://github.com/user-attachments/assets/680a74d2-7ce5-4e9d-8cba-9fd16561b618" />
-```
-```
-After delete operation in product collection
-```
-```
-<img width="633" height="648" alt="643231653-4d9fdd53-0fe8-4368-ac3f-f074755b8612" src="https://github.com/user-attachments/assets/1406472b-f638-410d-9f26-86c7e3b79773" />
-```
-```
+import pandas as pd
+from textblob import TextBlob
+import matplotlib.pyplot as plt
 
-## RESULT:
-The CRUD Operations on the Products Collection using MongoDB were implemented successfully. The product documents were created, retrieved, updated, and deleted using appropriate MongoDB commands, and the final changes were successfully verified in the Products collection.
-The **CRUD Operations on the Products Collection using MongoDB** were implemented successfully. The product documents were created, retrieved, updated, and deleted using appropriate MongoDB commands, and the final changes were successfully verified in the Products collection.
+data = pd.read_csv("tweets_big.csv")
+
+def get_sentiment(text):
+    analysis = TextBlob(str(text))
+    if analysis.sentiment.polarity > 0:
+        return "Positive"
+    elif analysis.sentiment.polarity < 0:
+        return "Negative"
+    else:
+        return "Neutral"
+
+
+data["Sentiment"] = data["text"].apply(get_sentiment)
+
+sentiment_counts = data["Sentiment"].value_counts()
+print(sentiment_counts)
+
+plt.figure(figsize=(6,4))
+sentiment_counts.plot(kind='bar', color=['green','red','gray'])
+plt.title("Sentiment Analysis Results")
+plt.xlabel("Sentiment Type")
+plt.ylabel("Number of Tweets/Reviews")
+plt.show()
+
+print("\nSample Results:")
+print(data[["text", "Sentiment"]].head())
+```
+##output:
+```
+```
+a) Stock Market Prediction using Linear Regression : To predict future stock prices using machine learning regression techniques.
+```
+```
+<img width="878" height="657" alt="645886570-af295af6-4d49-4943-85d8-6cbbb96acf15" src="https://github.com/user-attachments/assets/f55f4cd7-f93c-4cda-9f30-7a32ae292751" />
+```
+```
+b) Real-Time Sentiment Analysis of Tweets: Perform real-time sentiment analysis on user-provided text data (tweets or reviews).
+```
+```
+<img width="737" height="652" alt="645886417-e3f524ba-4914-44f4-8515-7de366410c79" src="https://github.com/user-attachments/assets/d9e5c604-3b2b-48a8-8ed9-39b50881e89f" />
+```
+```
+##RESULT:
+The Stock Market Prediction using Linear Regression and Real-Time Sentiment Analysis of Tweets were implemented successfully. The Linear Regression model was used to predict stock prices using historical stock market data, while the sentiment analysis system successfully analyzed user-provided tweets or reviews and classified them as Positive, Negative, or Neutral.
+
