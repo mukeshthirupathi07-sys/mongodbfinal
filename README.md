@@ -123,10 +123,62 @@ To insert all documents in product collections
     }
   ])
 ```
+To read all documents in product collections
+```
+db.products.find().pretty()
+```
+To read products below 5000
+```
+db.products.find({ price: { $lt: 5000 } })
+```
+To read only accessories
+```
+db.products.find({ category: "Accessories" })
+```
+To read electronics below 50,000
+```
+db.products.find({
+  $and: [
+    { category: "Electronics" },
+    { price: { $lt: 50000 } }
+  ]
+})
+```
+To update laptop price
+```
+db.products.updateOne(
+  { name: "Laptop" },
+  { $set: { price: 52000 } }
+)
+```
+To increase keyboard stock by 10
+```
+db.products.updateOne(
+  { name: "Keyboard" },
+  { $inc: { stock: 10 } }
+)
+```
+To add premium tag to smartwatch
+```
+db.products.updateOne(
+  { name: "Smartwatch" },
+  { $push: { tags: "premium" } }
+)
+```
+To delete Keyboard
+```
+db.products.deleteOne({
+  name: "Keyboard"
+})
+```
 
 ## OUTPUT:
+After Insertions
+```
+<img width="819" height="94" alt="643231602-f2080e4c-79d4-4ee2-915a-ba3d507cb604" src="https://github.com/user-attachments/assets/a4182eef-0330-4c49-a015-2c2d2ac939ec" />
+```
 
-*(Paste the execution output showing product insertion, retrieval of documents, updated product information, deletion of a product, and the final Products collection here.)*
+
 
 ## RESULT:
 
