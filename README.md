@@ -175,11 +175,45 @@ db.products.deleteOne({
 ## OUTPUT:
 After Insertions
 ```
+```
 <img width="819" height="94" alt="643231602-f2080e4c-79d4-4ee2-915a-ba3d507cb604" src="https://github.com/user-attachments/assets/a4182eef-0330-4c49-a015-2c2d2ac939ec" />
 ```
-
-
+After read operation
+```
+<img width="601" height="806" alt="643231610-a76c3589-34b6-4eda-b3fc-e7f00e449a2c" src="https://github.com/user-attachments/assets/92b56fd2-e14b-45df-b654-6fbf3f8802a0" />
+```
+```
+To read products below 5000
+```
+```
+<img width="839" height="483" alt="643231622-a7199b83-724f-4b72-9e10-1829cf7c245f" src="https://github.com/user-attachments/assets/66a0112d-44c1-467f-99ef-66849ba6aac6" />
+```
+```
+To read only accessories
+```
+```
+<img width="840" height="485" alt="643231627-57f983b2-b1ad-4f1a-93bd-2f095c6733c5" src="https://github.com/user-attachments/assets/93be317d-3d12-404f-b529-e8cbd53c6d80" />
+```
+```
+To read electronics below 50,000
+```
+```
+<img width="828" height="466" alt="643231636-a221790c-62b0-4654-a633-71b85acad5db" src="https://github.com/user-attachments/assets/b0513c1c-c1eb-4a1b-b076-405f51175ac4" />
+```
+```
+After updating the product collections
+```
+```
+<img width="630" height="800" alt="643231644-988cb312-02ca-4ed7-94f3-28a9c9f05754" src="https://github.com/user-attachments/assets/680a74d2-7ce5-4e9d-8cba-9fd16561b618" />
+```
+```
+After delete operation in product collection
+```
+```
+<img width="633" height="648" alt="643231653-4d9fdd53-0fe8-4368-ac3f-f074755b8612" src="https://github.com/user-attachments/assets/1406472b-f638-410d-9f26-86c7e3b79773" />
+```
+```
 
 ## RESULT:
-
+The CRUD Operations on the Products Collection using MongoDB were implemented successfully. The product documents were created, retrieved, updated, and deleted using appropriate MongoDB commands, and the final changes were successfully verified in the Products collection.
 The **CRUD Operations on the Products Collection using MongoDB** were implemented successfully. The product documents were created, retrieved, updated, and deleted using appropriate MongoDB commands, and the final changes were successfully verified in the Products collection.
