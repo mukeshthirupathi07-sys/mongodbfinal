@@ -65,13 +65,15 @@ Display the final Products collection and verify the changes made through the CR
 Execute all the MongoDB commands, capture the required outputs, commit the completed experiment, and push the changes to the forked GitHub repository.
 
 ## PROGRAM:
-```
 To create a database
+```
 use mydb
 ```
+To create collection "product"
 ```
 db.createCollection("products")
 ```
+To insert all documents in product collections
 ```
 `db.products.insertMany([
     {
